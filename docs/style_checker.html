@@ -669,6 +669,28 @@ x = some + ...
       </div>
 
       <div>
+        When <b>align_round_brackets</b> or <b>align_other_brackets</b>
+        is disabled, continuation lines are indented by one tab from
+        the statement start rather than aligned to the opening bracket.
+        Closing brackets that appear on their own line are aligned with
+        the line of their corresponding opening bracket. For nested
+        brackets, each closing bracket aligns with its own opening
+        bracket's indentation level. For example:
+<pre>
+x = foo( ...
+    arg1, ...
+    arg2 ...
+);
+
+y = foo( ...
+    [ ...
+        1, 2 ...
+    ] ...
+);
+</pre>
+      </div>
+
+      <div>
         The following constructs cause indentation:
         <ul>
           <li>Any compound statements (e.g. if, switch, etc.)</li>
@@ -699,12 +721,16 @@ x = some + ...
           <li>
             <b>align_round_brackets</b>: Align continuations inside
             normal brackets to the opening brace. By default this is
-            true.
+            true. When set to false, continuation lines inside round
+            brackets are indented by one tab relative to the
+            statement start instead.
           </li>
           <li>
             <b>align_other_brackets</b>: Align continuations inside
             matrix or cell expressions to the opening brace. By
-            default this is true.
+            default this is true. When set to false, continuation
+            lines inside square and curly brackets are indented by
+            one tab relative to the statement start instead.
           </li>
         </ul>
       </div>

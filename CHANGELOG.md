@@ -20,7 +20,12 @@ Not quite compatible with Octave yet. See #43 [octave support](https://github.co
 
 ### 0.9.45-dev
 
-
+* Fix indentation of closing brackets on their own line when
+  `align_round_brackets` or `align_other_brackets` is disabled. They
+  now align with the line of the corresponding opening bracket instead
+  of receiving a half-indent continuation offset. Nested closing
+  brackets align with their respective opening bracket's indentation
+  level.
 
 ### 0.9.44
 
