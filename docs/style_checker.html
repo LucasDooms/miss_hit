@@ -422,7 +422,26 @@ enable_rule: "file_length"
 
       <div>
         This rule enforces whitespace after commas, and no whitespace
-        before commas, e.g. 'foo, bar, baz'.
+        before commas, e.g. 'foo, bar, baz'. This rule applies to all
+        commas not covered by a more specific comma rule.
+      </div>
+
+      <h4>Whitespace surrounding commas in indexing and calls ("whitespace_comma_indexing")</h4>
+
+      <div>
+        As <em>whitespace_comma</em>, but applies only to commas in
+        index operations and function call arguments, e.g.
+        <code>x(1, :)</code> or <code>f(a, b)</code>. This rule takes
+        precedence over <em>whitespace_comma</em> for these contexts.
+      </div>
+
+      <h4>Whitespace surrounding commas in argument dimensions ("whitespace_comma_arg_dimensions")</h4>
+
+      <div>
+        As <em>whitespace_comma</em>, but applies only to commas in
+        argument validation dimension constraints, e.g.
+        <code>x (1, :) double</code>. This rule takes precedence over
+        <em>whitespace_comma</em> for these contexts.
       </div>
 
       <h4>Whitespace surrounding semicolons ("whitespace_semicolon")</h4>
