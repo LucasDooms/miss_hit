@@ -1463,7 +1463,11 @@ class Entity_Constraints(Node):
             raise ICE("called naming check on %s block" % self.n_parent.kind())
 
         if cfg.active("naming_functions"):
-            self.n_name.sty_check_naming(mh, cfg, "attribute",
+            if self.n_parent.get_attribute("Constant"):
+                kind = "constant_attribute"
+            else:
+                kind = "attribute"
+            self.n_name.sty_check_naming(mh, cfg, kind,
                                          "naming_functions")
 
 

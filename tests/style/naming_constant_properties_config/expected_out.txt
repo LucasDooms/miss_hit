@@ -1,0 +1,11 @@
+=== PLAIN MODE ===
+In Test_Class.m, line 8
+|         MAX_VALUE = 100            % no - ALL_CAPS violates custom config
+|         ^^^^^^^^^ style: violates naming scheme for constant_attribute [naming_functions]
+In Test_Class.m, line 9
+|         Bad_Name = 3               % no - PascalCase violates custom config
+|         ^^^^^^^^ style: violates naming scheme for constant_attribute [naming_functions]
+MISS_HIT Style Summary: 1 file(s) analysed, 2 style issue(s)
+
+=== HTML MODE ===
+MISS_HIT Style Summary: 1 file(s) analysed, 2 style issue(s)

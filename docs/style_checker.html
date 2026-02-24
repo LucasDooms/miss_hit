@@ -1022,6 +1022,15 @@ end
             match. The default is the same as it is for classes. (See
             above.)
           </li>
+          <li>
+            <b>regex_constant_attribute_name</b>: A regular expression
+            that every class attribute in
+            a <tt>properties (Constant)</tt> block must match. The
+            default is <pre>[A-Z]+(_[A-Z0-9]+)*</pre> This is
+            all-uppercase, underscore separated names (e.g.
+            MAX_ITERATIONS, COLOR_RED). When set, this overrides
+            regex_attribute_name for constant properties.
+          </li>
         </ul>
       </div>
 

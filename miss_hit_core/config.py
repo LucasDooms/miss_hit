@@ -258,6 +258,10 @@ DEFAULT_LC_NAMING_SCHEME = "[a-z]+(_[a-z]+)*"
 # A much simpler naming scheme: underscore separated lowercase without
 # numbers.
 
+DEFAULT_CONSTANT_NAMING_SCHEME = "[A-Z]+(_[A-Z0-9]+)*"
+# All-uppercase, underscore separated, with optional numbers. For
+# example "MAX_ITERATIONS" or "COLOR_RED", but not "maxIterations".
+
 STYLE_RULES = {
     "file_length" : Style_Rule(
         "Ensures files do not get too big.",
@@ -390,7 +394,10 @@ STYLE_RULES = {
                 default = DEFAULT_LC_NAMING_SCHEME),
             "regex_attribute_name" : Regex_Style_Configuration(
                 "Regex for class attributes",
-                default = DEFAULT_NAMING_SCHEME)
+                default = DEFAULT_NAMING_SCHEME),
+            "regex_constant_attribute_name" : Regex_Style_Configuration(
+                "Regex for class constant attributes",
+                default = DEFAULT_CONSTANT_NAMING_SCHEME)
         }),
 
     "naming_parameters" : Style_Rule(
