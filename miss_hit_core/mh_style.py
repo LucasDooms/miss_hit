@@ -900,7 +900,13 @@ def stage_3_analysis(mh, cfg, tbuf, is_embedded, fixed, valid_code):
                     offset = token.location.col_start - \
                         statement_start_token.location.col_start
 
-                    if offset <= 0 and not token.annotation:
+                    if token.kind in ("KET", "M_KET", "C_KET"):
+                        # Closing brackets should align with the
+                        # statement start when bracket alignment is
+                        # disabled, not get the continuation
+                        # half-indent fallback.
+                        offset = 0
+                    elif offset <= 0 and not token.annotation:
                         # If positive, we can just add it. If 0 or
                         # negative, then we add 1/2 tabs to continue
                         # the line, since previously it was not offset
