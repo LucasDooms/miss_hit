@@ -365,6 +365,7 @@ def stage_3_analysis(mh, cfg, tbuf, is_embedded, fixed, valid_code):
     # Some state needed to fix indentation
     statement_start_token = None
     current_indent = 0
+    current_line_indent = 0
     enclosing_ast = None
     bracket_stack = []
     relevant_brackets = set()
@@ -902,10 +903,21 @@ def stage_3_analysis(mh, cfg, tbuf, is_embedded, fixed, valid_code):
 
                     if token.kind in ("KET", "M_KET", "C_KET"):
                         # Closing brackets should align with the
-                        # statement start when bracket alignment is
-                        # disabled, not get the continuation
-                        # half-indent fallback.
-                        offset = 0
+                        # opening bracket's line when bracket
+                        # alignment is disabled. For outermost
+                        # brackets (opening bracket on the statement
+                        # start line), this means offset = 0. For
+                        # nested brackets, we align with the opening
+                        # bracket's indentation.
+                        if bracket_stack and \
+                           bracket_stack[-1].fix.correct_indent \
+                                is not None:
+                            offset = bracket_stack[-1].fix \
+                                .correct_indent - \
+                                cfg.style_config["tab_width"] * \
+                                current_indent
+                        else:
+                            offset = 0
                     elif offset <= 0 and not token.annotation:
                         # If positive, we can just add it. If 0 or
                         # negative, then we add 1/2 tabs to continue
@@ -925,6 +937,7 @@ def stage_3_analysis(mh, cfg, tbuf, is_embedded, fixed, valid_code):
                                   current_indent +
                                   offset)
                 token.fix.correct_indent = correct_spaces
+                current_line_indent = correct_spaces
 
                 if token.location.col_start != correct_spaces:
                     mh.style_issue(token.location,
@@ -941,6 +954,9 @@ def stage_3_analysis(mh, cfg, tbuf, is_embedded, fixed, valid_code):
         # opening brace, and the opening braces considering the
         # context we're currently in.
         if token.kind in ("M_BRA", "C_BRA", "BRA"):
+            if token.fix.correct_indent is None and \
+               token.kind not in relevant_brackets:
+                token.fix.correct_indent = current_line_indent
             bracket_stack.append(token)
         elif token.kind in ("M_KET", "C_KET", "KET"):
             bracket_stack.pop()
