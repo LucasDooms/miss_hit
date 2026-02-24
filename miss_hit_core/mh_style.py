@@ -453,7 +453,16 @@ def stage_3_analysis(mh, cfg, tbuf, is_embedded, fixed, valid_code):
         # end_of_statements rule, which is much more strict and
         # complete.
         if token.kind == "COMMA":
-            if cfg.active("whitespace_comma"):
+            # Determine which sub-rule applies based on AST context
+            ast = token.ast_link
+            if isinstance(ast, Entity_Constraints):
+                comma_rule = "whitespace_comma_arg_dimensions"
+            elif isinstance(ast, (Reference, Cell_Reference)):
+                comma_rule = "whitespace_comma_indexing"
+            else:
+                comma_rule = "whitespace_comma"
+
+            if cfg.active(comma_rule):
                 token.fix.ensure_trim_before = True
                 token.fix.ensure_ws_after = True
 
@@ -462,7 +471,7 @@ def stage_3_analysis(mh, cfg, tbuf, is_embedded, fixed, valid_code):
                     mh.style_issue(token.location,
                                    "comma cannot be preceeded by whitespace "
                                    "and must be followed by whitespace",
-                                   "whitespace_comma",
+                                   comma_rule,
                                    fixed)
 
             if cfg.active("spurious_row_comma") and token.fix.spurious:

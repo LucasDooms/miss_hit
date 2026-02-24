@@ -76,10 +76,10 @@ In test_4.m, line 5
 |              ^ style: = must be preceeded by whitespace [fixed] [whitespace_assignment]
 In test_4.m, line 6
 |             dat(i,:) = scaling(i) .* dat(i,:);
-|                  ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma]
+|                  ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma_indexing]
 In test_4.m, line 6
 |             dat(i,:) = scaling(i) .* dat(i,:);
-|                                           ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma]
+|                                           ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma_indexing]
 In test_4.m, line 8
 |     case'chans_samples_trials'
 |     ^^^^ style: keyword must be succeeded by whitespace [fixed] [whitespace_keywords]
@@ -88,16 +88,16 @@ In test_4.m, line 9
 |              ^ style: = must be preceeded by whitespace [fixed] [whitespace_assignment]
 In test_4.m, line 10
 |             dat(i,:,:) = scaling(i) .* dat(i,:,:);
-|                  ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma]
+|                  ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma_indexing]
 In test_4.m, line 10
 |             dat(i,:,:) = scaling(i) .* dat(i,:,:);
-|                    ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma]
+|                    ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma_indexing]
 In test_4.m, line 10
 |             dat(i,:,:) = scaling(i) .* dat(i,:,:);
-|                                             ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma]
+|                                             ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma_indexing]
 In test_4.m, line 10
 |             dat(i,:,:) = scaling(i) .* dat(i,:,:);
-|                                               ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma]
+|                                               ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma_indexing]
 test_5.m: style: violates naming scheme for scripts [naming_scripts]
 test_5.m: style: Could not find any copyright notice [copyright_notice]
 In test_5.m, line 3

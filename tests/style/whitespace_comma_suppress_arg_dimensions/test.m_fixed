@@ -1,0 +1,14 @@
+% (c) Copyright 2026 Lucas Dooms
+
+function test(x, y)
+    arguments
+        x (1,:) double
+        y (1,1) single
+    end
+
+    % Indexing - NOT suppressed, should be flagged
+    z = x(1, :);
+
+    % Literal - NOT suppressed, should be flagged
+    B = [1, 2];
+end

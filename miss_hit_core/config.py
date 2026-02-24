@@ -305,6 +305,14 @@ STYLE_RULES = {
         "Ensures there is no whitespace before a comma and whitespace (or a"
         " newline) after."),
 
+    "whitespace_comma_indexing" : Style_Rule(
+        "As whitespace_comma, but only for commas in indexing and function"
+        " call arguments, e.g. x(1,:) or f(a,b)."),
+
+    "whitespace_comma_arg_dimensions" : Style_Rule(
+        "As whitespace_comma, but only for commas in argument validation"
+        " dimension constraints, e.g. x (1,:) double."),
+
     "whitespace_semicolon" : Style_Rule(
         "Ensures there is no whitespace before a semicolon and whitespace"
         " (or a newline) after."),

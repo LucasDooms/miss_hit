@@ -43,7 +43,7 @@ In Potato.m, line 13
 |             ^ style: end this with just a newline [fixed] [end_of_statements]
 In Potato.m, line 13
 |         foo2,, ... comment1
-|             ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma]
+|             ^ style: comma cannot be preceeded by whitespace and must be followed by whitespace [fixed] [whitespace_comma_arg_dimensions]
 In Potato.m, line 13
 |         foo2,, ... comment1
 |              ^ style: unnecessary statement terminator [fixed] [end_of_statements]
